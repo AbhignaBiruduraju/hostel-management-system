@@ -1,0 +1,147 @@
+/* AdminDashboard.css - Minimalist & Graphic Version */
+
+:root {
+  --primary-dark: #334155; /* Dark slate for primary elements like sidebar */
+  --primary-medium: #475569; /* Medium slate */
+  --primary-light: #64748b; /* Lighter slate for active states */
+  
+  --secondary-accent: #3b82f6; /* A subtle blue accent, not too bright */
+  
+  --bg-light: #f8fafc; /* Near white background for content */
+  --card-bg: #ffffff;
+  
+  --text-dark: #1e293b; /* Very dark text for headings */
+  --text-medium: #475569; /* Medium text for body copy */
+  --text-light: #94a3b8; /* Light text for subtle details */
+
+  --border-color: #e2e8f0; /* Light border for separation */
+  --box-shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.07), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --transition-speed: 0.2s ease-in-out;
+  --font-family: 'Inter', sans-serif; /* Modern, clean sans-serif */
+}
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  background-color: var(--bg-light);
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-light);
+  box-shadow: var(--box-shadow-subtle);
+  border-radius: 8px; /* Slight rounded corners for the whole dashboard */
+  overflow: hidden; /* Ensures internal elements respect border-radius */
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 250px;
+  background-color: var(--primary-dark); /* Darker slate for sidebar */
+  color: white;
+  padding: 30px 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+  border-right: 1px solid var(--border-color);
+}
+
+.sidebar h2 {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #e2e8f0; /* Lighter color for heading */
+  margin-bottom: 40px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  flex-grow: 1; /* Allows list to take available space */
+}
+
+.sidebar ul li {
+  padding: 15px 25px;
+  cursor: pointer;
+  transition: background var(--transition-speed), color var(--transition-speed), transform var(--transition-speed);
+  font-size: 1em;
+  font-weight: 500;
+  color: #cbd5e1; /* Light text for inactive items */
+  display: flex;
+  align-items: center;
+}
+
+.sidebar ul li:hover {
+  background-color: var(--primary-medium); /* Medium slate on hover */
+  color: white;
+  transform: translateX(5px);
+}
+
+.sidebar ul li.active {
+  background-color: var(--primary-light); /* Lighter slate for active tab */
+  font-weight: 600;
+  color: white;
+  box-shadow: inset 3px 0 0 0 var(--secondary-accent); /* Accent border on active */
+}
+
+/* Main Content Area */
+.content {
+  flex-grow: 1;
+  padding: 30px;
+  background-color: var(--bg-light);
+  overflow-y: auto; /* Enable scrolling for content if needed */
+}
+
+.content h2 {
+  color: var(--text-dark);
+  font-size: 2em;
+  margin-bottom: 25px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .sidebar h2 {
+    margin-bottom: 20px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center tabs on small screens */
+  }
+
+  .sidebar ul li {
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+  }
+  
+  .sidebar ul li.active {
+    box-shadow: none;
+    border-bottom: 3px solid var(--secondary-accent); /* Underline active tab */
+    border-radius: 0;
+  }
+
+  .content {
+    padding: 20px;
+  }
+}
+  

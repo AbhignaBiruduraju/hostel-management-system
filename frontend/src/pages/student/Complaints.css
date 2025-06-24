@@ -1,0 +1,333 @@
+/* Complaints.css */
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --success-color: #28a745;
+    --error-color: #dc3545;
+    --warning-color: #ffc107; /* Added from AdminComplaints.css */
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --gray-color: #6c757d;
+    --light-gray: #e9ecef;
+    --border-radius: 12px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .complaints-container {
+    max-width: 900px; /* Adjusted to fit the general content area better */
+    margin: 20px auto;
+    padding: 2rem 1rem;
+    background-color: var(--light-color); /* Use variable */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .complaints-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .complaints-header h1 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .complaints-header p {
+    color: var(--gray-color);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .complaints-box {
+    display: flex;
+    flex-direction: column;
+    height: 70vh; /* Adjusted height for chat area */
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    background-color: white; /* Changed from light-color to white for contrast */
+    box-shadow: var(--box-shadow);
+  }
+  
+  .messages-container {
+    flex: 1; /* Use flex:1 for proper growth */
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    scroll-behavior: smooth;
+  }
+  
+  .message {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.3s ease-out; /* Fade in animation */
+  }
+  
+  .message.sent {
+    justify-content: flex-end;
+  }
+  
+  .message.received {
+    justify-content: flex-start;
+  }
+  
+  .message-avatar {
+    font-size: 2em; /* Slightly larger avatar */
+    margin: 0 10px;
+    align-self: flex-start;
+    flex-shrink: 0; /* Prevent shrinking */
+  }
+  
+  .message.sent .message-avatar {
+    order: 2; /* Avatar after content for sent messages */
+  }
+  
+  .message-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%; /* Slightly wider messages */
+  }
+  
+  .message.sent .message-content {
+    align-items: flex-end;
+  }
+  
+  .message-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3rem;
+  }
+  
+  .message.sent .message-header {
+    flex-direction: row-reverse; /* Reverse order for sent messages */
+  }
+  
+  .message-user {
+    font-weight: 600; /* Bolder user name */
+    color: var(--dark-color); /* Use dark-color */
+    margin: 0 8px; /* Adjusted margin */
+    font-size: 0.95em;
+  }
+  
+  .message-time {
+    font-size: 0.75em; /* Slightly smaller timestamp */
+    color: var(--gray-color); /* Use gray-color */
+    opacity: 0.8;
+  }
+  
+  .message-bubble {
+    padding: 12px 18px;
+    border-radius: 20px; /* More rounded corners */
+    position: relative;
+    word-wrap: break-word;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.4; /* Better line spacing */
+  }
+  
+  .message.sent .message-bubble {
+    background-color: var(--primary-color); /* Using CSS variable */
+    color: white;
+    border-bottom-right-radius: 4px; /* More subtle tail effect */
+  }
+  
+  .message.received .message-bubble {
+    background-color: var(--light-gray); /* Using CSS variable */
+    color: var(--dark-color); /* Using CSS variable */
+    border-bottom-left-radius: 4px; /* More subtle tail effect */
+  }
+  
+  .status-badge {
+    font-size: 0.65em; /* Smaller status badge */
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 12px; /* More rounded */
+    margin-top: 8px; /* More spacing */
+    align-self: flex-end;
+    text-transform: uppercase; /* Uppercase status */
+    letter-spacing: 0.5px;
+  }
+  
+  .status-badge.pending {
+    background-color: rgba(255, 193, 7, 0.2); /* Use rgba for lighter effect */
+    color: #d39e00;
+  }
+  
+  .status-badge.resolved {
+    background-color: rgba(40, 167, 69, 0.2); /* Use rgba for lighter effect */
+    color: var(--success-color);
+  }
+  
+  .input-section {
+    padding: 1rem 1.5rem; /* Consistent padding */
+    border-top: 1px solid var(--light-gray);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; /* Use rem for consistency */
+    background-color: var(--light-color); /* Light grey background for input */
+  }
+  
+  .input-container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    gap: 0.8rem; /* Use rem for consistency */
+  }
+  
+  .input-container textarea {
+    flex: 1; /* Use flex:1 */
+    padding: 0.8rem 1rem; /* Consistent padding */
+    border: 1px solid var(--light-gray);
+    border-radius: var(--border-radius); /* Use variable */
+    font-size: 1em;
+    resize: none;
+    min-height: 45px; /* Slightly taller */
+    max-height: 120px; /* Limit height */
+    overflow: hidden;
+    transition: var(--transition); /* Smooth transition */
+  }
+  
+  .input-container textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+  }
+  
+  .send-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px; /* Larger button */
+    height: 50px; /* Larger button */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition); /* Smooth transition */
+    flex-shrink: 0;
+  }
+  
+  .send-button:hover:not(:disabled) {
+    background-color: var(--secondary-color);
+    transform: scale(1.05); /* Pop effect on hover */
+  }
+  
+  .send-button:disabled {
+    background-color: var(--gray-color); /* Use variable */
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+  
+  .send-button svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+  }
+  
+  .input-hint {
+    font-size: 0.8rem; /* Use rem for consistency */
+    color: var(--gray-color); /* Use variable */
+    text-align: right; /* Align right */
+    margin-top: 0.5rem;
+  }
+  
+  /* Loading and Error Styles (similar to previous components) */
+  .complaints-loading,
+  .complaints-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    text-align: center;
+  }
+  
+  .complaints-loading .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .complaints-error .error-icon {
+    font-size: 3em;
+    color: var(--error-color);
+    margin-bottom: 15px;
+  }
+  
+  .complaints-error p {
+    color: var(--error-color);
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .complaints-error .retry-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: var(--transition);
+  }
+  
+  .complaints-error .retry-btn:hover {
+    background-color: var(--secondary-color);
+  }
+
+  /* Fade in animation */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .complaints-container {
+      padding: 1rem;
+    }
+    .message-content {
+      max-width: 90%;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .message-avatar {
+      font-size: 1.8em;
+    }
+    .message-bubble {
+      padding: 10px 12px;
+    }
+    .input-container textarea {
+      padding: 10px 12px;
+    }
+    .send-button {
+      width: 40px;
+      height: 40px;
+    }
+  }

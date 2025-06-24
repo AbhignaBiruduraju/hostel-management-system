@@ -1,0 +1,33 @@
+.main-content {
+    display: flex;
+  }
+  
+  /* Apply sidebar spacing only for dashboard pages */
+  .dashboard-layout {
+    display: flex;
+  }
+  
+  /* Sidebar should only take space in dashboard pages */
+  .sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #4a1ec3;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Content should shift only in dashboard */
+  .dashboard-layout .content {
+    margin-left: 140px; /* Shift content only for dashboard */
+    flex: 1;
+    padding: 20px;
+  }
+  
+  /* Normal homepage layout remains unaffected */
+  .main-content:not(.dashboard-layout) .content {
+    margin-left: 0; /* No sidebar effect */
+  }
+  

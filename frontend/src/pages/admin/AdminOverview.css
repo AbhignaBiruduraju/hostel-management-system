@@ -1,0 +1,295 @@
+/* AdminOverview.css - Minimalist & Graphic Version */
+
+:root {
+  --primary-color: #64748b; /* Slate Gray for main elements */
+  --secondary-color: #94a3b8; /* Lighter Slate Gray */
+  --tertiary-color: #cbd5e1; /* Even lighter gray for borders/dividers */
+  
+  --bg-light: #f8fafc; /* Near white background */
+  --card-bg: #ffffff;
+  
+  --text-dark: #334155; /* Dark text for primary info */
+  --text-medium: #475569; /* Medium text for secondary info */
+  --text-light: #64748b; /* Light text for subtle details */
+
+  --status-pending-bg: #fcf6b0; /* Soft yellow for pending */
+  --status-pending-text: #783a00; /* Darker brown for text */
+  --status-accepted-bg: #e2e8f0; /* Very light gray for accepted (minimalist) */
+  --status-accepted-text: #22c55e; /* Green for accepted text */
+  --status-cancelled-bg: #fecaca; /* Soft red for cancelled */
+  --status-cancelled-text: #dc2626; /* Darker red for text */
+
+  --font-family: 'Inter', sans-serif; /* Modern, clean sans-serif */
+  --box-shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --box-shadow-md: 0 2px 4px -1px rgba(0, 0, 0, 0.05), 0 4px 5px -1px rgba(0, 0, 0, 0.02);
+  --transition-speed: 0.2s ease-in-out;
+}
+
+/* Main Container Styling */
+.admin-overview-container {
+  max-width: 100%; /* Take full width of content area */
+  margin: 0 auto; /* Center within its parent */
+  padding: 30px;
+  background-color: var(--bg-light);
+  border-radius: 10px;
+  box-shadow: var(--box-shadow-md);
+  color: var(--text-dark);
+  animation: fadeIn 0.6s ease-out;
+  border: 1px solid var(--tertiary-color);
+}
+
+.admin-overview-container h2 {
+  text-align: center;
+  font-size: 2.2em;
+  color: var(--text-dark);
+  font-weight: 700;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--tertiary-color);
+}
+
+/* Table Styling */
+.admin-requests-table {
+  width: 100%;
+  border-collapse: separate; /* Use separate for rounded corners and spacing */
+  border-spacing: 0; /* Remove space between cells */
+  margin-top: 20px;
+  overflow: hidden; /* Ensures border-radius is applied */
+  border-radius: 8px; /* Rounded corners for table */
+  box-shadow: var(--box-shadow-subtle);
+  border: 1px solid var(--tertiary-color);
+}
+
+.admin-requests-table thead {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+}
+
+.admin-requests-table th,
+.admin-requests-table td {
+  padding: 15px 20px;
+  text-align: left;
+  font-size: 0.95em;
+  border-bottom: 1px solid var(--tertiary-color);
+}
+
+.admin-requests-table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.admin-requests-table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.admin-requests-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-requests-table tbody tr:nth-child(even) {
+  background-color: #fcfdfe; /* Very subtle stripe */
+}
+
+.admin-requests-table tbody tr:hover {
+  background-color: #f0f4f8; /* Light gray on hover */
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: var(--transition-speed);
+}
+
+/* Status Badges */
+.admin-requests-table .status-badge {
+  font-size: 0.75em;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  min-width: 80px; /* Consistent width */
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.admin-requests-table .status-badge.Pending {
+  background-color: var(--status-pending-bg);
+  color: var(--status-pending-text);
+  border-color: var(--status-pending-text);
+}
+
+.admin-requests-table .status-badge.Accepted {
+  background-color: var(--status-accepted-bg);
+  color: var(--status-accepted-text);
+  border-color: var(--status-accepted-text);
+}
+
+.admin-requests-table .status-badge.Cancelled {
+  background-color: var(--status-cancelled-bg);
+  color: var(--status-cancelled-text);
+  border-color: var(--status-cancelled-text);
+}
+
+/* Action Buttons */
+.accept-btn,
+.cancel-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-weight: 600;
+  transition: background-color var(--transition-speed), transform var(--transition-speed);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-right: 5px; /* Space between buttons */
+}
+
+.accept-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.accept-btn:hover {
+  background-color: #218838;
+  transform: translateY(-1px);
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+/* No requests message */
+.admin-overview-container p {
+  text-align: center;
+  padding: 30px;
+  font-size: 1.1em;
+  color: var(--text-light);
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: var(--box-shadow-subtle);
+  border: 1px solid var(--tertiary-color);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .admin-overview-container {
+    padding: 25px;
+  }
+  .admin-overview-container h2 {
+    font-size: 2em;
+  }
+  .admin-requests-table th,
+  .admin-requests-table td {
+    padding: 12px 15px;
+    font-size: 0.9em;
+  }
+  .accept-btn,
+  .cancel-btn {
+    padding: 6px 10px;
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-overview-container {
+    padding: 20px;
+    margin: 0 10px;
+  }
+  .admin-overview-container h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  .admin-requests-table {
+    overflow-x: auto; /* Enable horizontal scroll for table */
+    display: block; /* Required for overflow-x to work */
+    white-space: nowrap; /* Prevent content from wrapping */
+  }
+  .admin-requests-table thead,
+  .admin-requests-table tbody, 
+  .admin-requests-table th, 
+  .admin-requests-table td, 
+  .admin-requests-table tr {
+    display: block; /* Make table elements stack */
+    width: 100%; /* Ensure they take full width */
+  }
+  .admin-requests-table thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px; /* Hide header on small screens */
+  }
+  .admin-requests-table tr {
+    border: 1px solid var(--tertiary-color);
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  .admin-requests-table td {
+    border-bottom: 1px solid var(--tertiary-color);
+    position: relative;
+    padding-left: 50%; /* Space for pseudo-elements */
+    text-align: right;
+  }
+  .admin-requests-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-medium);
+  }
+  .admin-requests-table td:last-child {
+    border-bottom: none;
+  }
+  .admin-requests-table td:nth-of-type(1)::before { content: "Student"; }
+  .admin-requests-table td:nth-of-type(2)::before { content: "Room"; }
+  .admin-requests-table td:nth-of-type(3)::before { content: "Type"; }
+  .admin-requests-table td:nth-of-type(4)::before { content: "Description"; }
+  .admin-requests-table td:nth-of-type(5)::before { content: "Status"; }
+  .admin-requests-table td:nth-of-type(6)::before { content: "Cost"; }
+  .admin-requests-table td:nth-of-type(7)::before { content: "Action"; }
+
+  .accept-btn,
+  .cancel-btn {
+    display: block;
+    width: calc(100% - 10px); /* Full width minus margin */
+    margin: 5px auto; /* Center buttons */
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-overview-container {
+    padding: 15px;
+  }
+  .admin-overview-container h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+  }
+  .admin-requests-table td {
+    font-size: 0.85em;
+    padding-left: 45%;
+  }
+  .admin-requests-table td::before {
+    width: 40%;
+  }
+  .accept-btn,
+  .cancel-btn {
+    font-size: 0.75em;
+    padding: 5px 8px;
+  }
+}

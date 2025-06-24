@@ -1,0 +1,49 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  /* Spreads items evenly */
+    background-color: #4a1ec3;
+    border-radius: 0; /* Remove border-radius for sharp corners */
+    padding: 15px 40px;  /* Adjust padding for better spacing */
+    width: 100%; /* Ensure it spans full width */
+    box-sizing: border-box; /* Include padding in width */
+    position: sticky; /* Make navbar sticky */
+    top: 0;
+    z-index: 1000; /* Ensure it stays on top */
+  }
+  
+  .logo {
+    height: 50px;  /* Adjust logo size */
+    margin-right: 30px;  /* Space between logo and menu */
+  }
+  
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 40px; /* Increased spacing between links */
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar ul li {
+    display: inline;
+    background-color: transparent; /* Remove background from all list items */
+    border-radius: 0;
+  }
+  
+  .navbar ul li a {
+    text-decoration: none;
+    color: rgb(254, 254, 254);
+    font-size: 20px;  /* Slightly larger text */
+    font-weight: normal;
+    padding: 10px 15px; /* Add padding to increase clickable area */
+    transition: all 0.3s ease;
+  }
+  
+  .navbar ul li a.active {
+    font-weight: normal; /* Keep normal weight, background will indicate active */
+    background-color: #5b32c9; /* Background for active link */
+    border-radius: 10px; /* Rounded corners for active link */
+    border-bottom: none; /* Remove existing border-bottom */
+  }
+  

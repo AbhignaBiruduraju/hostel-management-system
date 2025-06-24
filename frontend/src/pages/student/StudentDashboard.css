@@ -1,0 +1,216 @@
+/* StudentDashboard.css - Minimalist & Graphic Sidebar */
+
+:root {
+  --sidebar-bg: #2d3748;
+  --sidebar-text: #e2e8f0; /* Light gray text */
+  --sidebar-hover-bg: #4a5568; /* Slightly lighter slate gray on hover */
+  --sidebar-active-bg: #3b4252; /* Even darker gray for active/selected */
+  --sidebar-accent: #63b3ed; /* Soft blue accent */
+  --border-color: #cbd5e1; /* Very light gray for borders */
+
+  --content-bg: #f8fafc; /* Near white background for content */
+  --text-dark: #2d3748;
+  --text-medium: #4a5568;
+  --text-light: #718096;
+
+  --font-family: 'Inter', sans-serif; /* Modern, clean sans-serif font */
+  --box-shadow-subtle: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --transition-speed: 0.2s ease-in-out;
+}
+
+/* General Styling */
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  background-color: var(--content-bg); /* Apply light background to body */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh; /* Use min-height to allow content to grow */
+  background-color: var(--content-bg);
+}
+
+/* Sidebar Styling */
+.sidebar {
+  width: 240px; /* Slightly narrower sidebar */
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px; /* More top padding */
+  position: sticky; /* Sticky sidebar */
+  top: 0;
+  left: 0;
+  height: 100vh; /* Full viewport height */
+  box-shadow: var(--box-shadow-subtle);
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+.sidebar h2 {
+  text-align: center;
+  font-size: 1.8em; /* More refined heading size */
+  font-weight: 700;
+  margin-bottom: 30px; /* More space below heading */
+  color: white; /* Ensure heading is white */
+  letter-spacing: 0.02em;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-grow: 1; /* Allow list to take available space */
+}
+
+.sidebar ul li {
+  padding: 15px 25px; /* Horizontal padding for visual comfort */
+  cursor: pointer;
+  text-align: left; /* Align text to left */
+  transition: background-color var(--transition-speed);
+  font-size: 1em; /* Standard font size */
+  font-weight: 500;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Subtle separator */
+}
+
+.sidebar ul li:last-child {
+  border-bottom: none;
+}
+
+.sidebar ul li:hover {
+  background-color: var(--sidebar-hover-bg);
+  transform: translateX(5px); /* Subtle slide effect */
+}
+
+.sidebar ul li.active {
+  background-color: var(--sidebar-active-bg);
+  position: relative;
+}
+
+.sidebar ul li.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px; /* Active indicator bar */
+  background-color: var(--sidebar-accent);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Content Area */
+.content {
+  margin-left: 240px; /* Match sidebar width */
+  flex-grow: 1;
+  padding: 20px; /* Standard padding */
+  background-color: var(--content-bg);
+  box-shadow: inset 2px 0px 5px rgba(0, 0, 0, 0.02); /* Subtle inner shadow */
+}
+
+/* Section Styling (for dynamic content) */
+.section {
+  display: none;
+}
+
+.section.active {
+  display: block;
+}
+
+/* Logout Button */
+.logout-btn {
+  margin-top: auto; /* Push to bottom */
+  padding: 20px 25px; /* More padding */
+  background-color: transparent; /* Transparent background */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Subtle top border */
+  text-align: center;
+  cursor: pointer;
+  color: var(--sidebar-text);
+  font-size: 1.1em; /* Slightly larger font */
+  font-weight: 600;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+.logout-btn:hover {
+  background-color: #c0392b; /* A subtle red hover for logout */
+  color: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto; /* Allow sidebar to collapse height */
+    position: relative;
+    padding-top: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar h2 {
+    margin-bottom: 15px;
+  }
+
+  .sidebar ul {
+    flex-direction: row; /* Horizontal nav for small screens */
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 10px;
+  }
+
+  .sidebar ul li {
+    padding: 10px 15px;
+    border-bottom: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.05); /* Vertical separators */
+    flex-basis: auto; /* Allow items to size naturally */
+    font-size: 0.9em;
+  }
+  
+  .sidebar ul li:last-child {
+    border-right: none;
+  }
+
+  .sidebar ul li.active::before {
+    width: 100%;
+    height: 3px; /* Active indicator at bottom */
+    bottom: 0;
+    top: auto;
+    left: 0;
+    border-radius: 0 0 4px 4px;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 15px;
+  }
+
+  .logout-btn {
+    padding: 15px;
+    border-top: none;
+    background-color: var(--sidebar-bg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Bottom border */
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .sidebar ul li {
+    padding: 8px 12px;
+    font-size: 0.85em;
+  }
+
+  .logout-btn {
+    font-size: 0.9em;
+    padding: 12px;
+  }
+}
+  
