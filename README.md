@@ -49,7 +49,3 @@ A web application for managing hostel operations, built with the MERN stack (Mon
    - Frontend: [http://localhost:3000](http://localhost:3000)
    - Backend API: [http://localhost:5000](http://localhost:5000)
 
-## Notes
-
-- Make sure MongoDB is running locally on your machine.
-- Default ports: 3000 (frontend), 5000 (backend).
